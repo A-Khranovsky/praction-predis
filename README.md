@@ -18,6 +18,7 @@ Used to store data:
 * service redis-server restart
 * open "http://localhost"
 
+## Sample of project's output:
 ```
 Using Redis with package 'Predis/predis'
 Setting to collection of associative array with key = key a value = value by equal NoSQL query:
