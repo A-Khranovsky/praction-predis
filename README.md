@@ -1,7 +1,7 @@
-##Vocation
+## Vocation
 Practiion with Redis.
 
-##Description
+## Description
 The working environment has a redis server configured. Project uses packege predis to work with redis server. Project
 inputs data, process it and outputs. There are tricks with entering multiple data through one request. There are 
 techniques for saving the resulting data after operations on sets, movement data to another set, deletion the data. 
@@ -12,7 +12,7 @@ Used to store data:
 * sets
 * sorted sets
 
-##To run do:
+## To run do:
 * docker-compose up -d
 * docker exec -it 36_php-apache_1 bash
 * service redis-server restart
