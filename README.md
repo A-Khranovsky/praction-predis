@@ -2,7 +2,7 @@
 Practiion with Redis.
 
 ## Description
-The working environment has a redis server configured. Project uses packege predis to work with redis server. Project
+The working environment has a redis server configured. Project uses package "predis/predis" to work with redis server. Project
 inputs data, process it and outputs. There are tricks with entering multiple data through one request. There are 
 techniques for saving the resulting data after operations on sets, movement data to another set, deletion the data. 
 
