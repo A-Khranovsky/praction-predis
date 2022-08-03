@@ -9,16 +9,3 @@ services:
       - .:/var/www/html
     ports:
       - "80:80"
-    networks:
-      - laravel
-
-  redis:
-    image: redis:4.0
-    container_name: app_redis
-    ports:
-      - "6382:6379"
-    networks:
-      - laravel      
-
-networks:
-  laravel:

@@ -19,9 +19,8 @@ Used to store data:
 * open "http://localhost"
 
 ## Sample of project's output:
-```
 Using Redis with package 'Predis/predis'
-Setting to collection of associative array with key = key a value = value by equal NoSQL query:
+Setting string "value" to DB with key = key by equal NoSQL query:
 SET key value
 
 Reading a value from item with key = key by equal NoSQL query:
@@ -34,10 +33,10 @@ NULL
 
 Has come back by equal NoSQL query: SELECT 0
 
-Inputing several values to collection of associative array, using equal NoSQL query:
+Inputing several values by one query, using equal NoSQL query:
 MSET fst 1 snd 2 thd 3 fth 4
 
-Reading fst and fth from collection of associative array, using equal NoSQL query:
+Reading fst and fth, using equal NoSQL query:
 MGET fst fst
 
 Array
@@ -127,10 +126,10 @@ KEYS *
 
 Array
 (
-    [0] => fst
-    [1] => thd
-    [2] => fth
-    [3] => snd
+    [0] => fth
+    [1] => fst
+    [2] => snd
+    [3] => thd
 )
 
 Selecting of the keys strats from letter 'f' of DB, using equal NoSQL query:
@@ -138,8 +137,8 @@ KEYS f*
 
 Array
 (
-    [0] => fst
-    [1] => fth
+    [0] => fth
+    [1] => fst
 )
 
 Renaming the key fst to first, using equal NoSQL query:
@@ -149,8 +148,8 @@ KEYS f*
 
 Array
 (
-    [0] => first
-    [1] => fth
+    [0] => fth
+    [1] => first
 )
 
 Key lifetime manipulation
@@ -207,7 +206,7 @@ string(8) "password"
 
 HGET admin registered_at
 
-string(19) "2022-07-27 14:33:25"
+string(19) "2022-08-03 07:39:58"
 
 Deleting the hash admin, using equal NoSQL query:
 DEL admin
@@ -224,7 +223,7 @@ array(3) {
   [1]=>
   string(8) "password"
   [2]=>
-  string(19) "2022-07-27 14:33:25"
+  string(19) "2022-08-03 07:39:58"
 }
 
 
@@ -262,7 +261,7 @@ array(3) {
   ["pass"]=>
   string(8) "password"
   ["registered_at"]=>
-  string(19) "2022-07-27 14:33:25"
+  string(19) "2022-08-03 07:39:58"
 }
 
 
@@ -282,9 +281,9 @@ SMEMBERS email
 
 array(3) {
   [0]=>
-  string(12) "alex@ukr.net"
-  [1]=>
   string(14) "jack@gmail.com"
+  [1]=>
+  string(12) "alex@ukr.net"
   [2]=>
   string(14) "alex@gmail.com"
 }
@@ -313,7 +312,7 @@ array(2) {
 Getting random value of set, using equal NoSQL query:
 SPOP email
 
-string(14) "jack@gmail.com"
+string(14) "alex@gmail.com"
 
 
 Creating new set subscribers, using equal NoSQL query:
@@ -324,13 +323,13 @@ SMEMBERS subscribers
 
 array(4) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(14) "alex@gmail.com"
   [2]=>
   string(21) "your_name@example.com"
   [3]=>
-  string(21) "your_name@example.net"
+  string(22) "your_name@example.info"
 }
 
 
@@ -339,16 +338,14 @@ SMEMBERS email
 
 array(1) {
   [0]=>
-  string(14) "alex@gmail.com"
+  string(14) "jack@gmail.com"
 }
 
 
 Watching result of intersection of sets email and subscribers, using equal NoSQL query:
 SINTER email subscribers
 
-array(1) {
-  [0]=>
-  string(14) "alex@gmail.com"
+array(0) {
 }
 
 
@@ -358,30 +355,32 @@ SMEMBERS subscribers
 
 array(1) {
   [0]=>
-  string(14) "alex@gmail.com"
+  string(14) "jack@gmail.com"
 }
 array(4) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(14) "alex@gmail.com"
   [2]=>
   string(21) "your_name@example.com"
   [3]=>
-  string(21) "your_name@example.net"
+  string(22) "your_name@example.info"
 }
 
 
 Watching result of differention of sets email and subscribers, using equal NoSQL query:
 SDIFF subscribers email
 
-array(3) {
+array(4) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(21) "your_name@example.com"
   [2]=>
-  string(21) "your_name@example.net"
+  string(14) "alex@gmail.com"
+  [3]=>
+  string(22) "your_name@example.info"
 }
 
 
@@ -391,32 +390,34 @@ SMEMBERS subscribers
 
 array(1) {
   [0]=>
-  string(14) "alex@gmail.com"
+  string(14) "jack@gmail.com"
 }
 array(4) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(14) "alex@gmail.com"
   [2]=>
   string(21) "your_name@example.com"
   [3]=>
-  string(21) "your_name@example.net"
+  string(22) "your_name@example.info"
 }
 
 
 Watching result of union of sets email and subscribers, using equal NoSQL query:
 SUNION subscribers email
 
-array(4) {
+array(5) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(21) "your_name@example.com"
   [2]=>
   string(14) "alex@gmail.com"
   [3]=>
-  string(21) "your_name@example.net"
+  string(22) "your_name@example.info"
+  [4]=>
+  string(14) "jack@gmail.com"
 }
 
 
@@ -426,15 +427,17 @@ SUNIONSTORE result email subscribers
 Watching members of set resultUnion, using equal NoSQL query:
 SMEMBERS resultUnion
 
-array(4) {
+array(5) {
   [0]=>
-  string(22) "your_name@example.info"
-  [1]=>
-  string(21) "your_name@example.com"
-  [2]=>
-  string(14) "alex@gmail.com"
-  [3]=>
   string(21) "your_name@example.net"
+  [1]=>
+  string(14) "jack@gmail.com"
+  [2]=>
+  string(21) "your_name@example.com"
+  [3]=>
+  string(14) "alex@gmail.com"
+  [4]=>
+  string(22) "your_name@example.info"
 }
 
 
@@ -444,9 +447,7 @@ SINTERSTORE resultInter email subscribers
 Watching members of set resultInter, using equal NoSQL query:
 SMEMBERS resultInter
 
-array(1) {
-  [0]=>
-  string(14) "alex@gmail.com"
+array(0) {
 }
 
 
@@ -456,17 +457,17 @@ SMEMBERS subscribers
 
 array(1) {
   [0]=>
-  string(14) "alex@gmail.com"
+  string(14) "jack@gmail.com"
 }
 array(4) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(14) "alex@gmail.com"
   [2]=>
   string(21) "your_name@example.com"
   [3]=>
-  string(21) "your_name@example.net"
+  string(22) "your_name@example.info"
 }
 
 
@@ -476,13 +477,15 @@ SDIFFSTORE resultDiff subscribers email
 Watching members of set resultDiff, using equal NoSQL query:
 SMEMBERS resultDiff
 
-array(3) {
+array(4) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(21) "your_name@example.com"
   [2]=>
-  string(21) "your_name@example.net"
+  string(14) "alex@gmail.com"
+  [3]=>
+  string(22) "your_name@example.info"
 }
 
 
@@ -492,17 +495,17 @@ SMEMBERS subscribers
 
 array(1) {
   [0]=>
-  string(14) "alex@gmail.com"
+  string(14) "jack@gmail.com"
 }
 array(4) {
   [0]=>
-  string(22) "your_name@example.info"
+  string(21) "your_name@example.net"
   [1]=>
   string(14) "alex@gmail.com"
   [2]=>
   string(21) "your_name@example.com"
   [3]=>
-  string(21) "your_name@example.net"
+  string(22) "your_name@example.info"
 }
 
 Moving element your_name@example.net form set subscribers to set new, using equal NoSQL query:
@@ -518,11 +521,11 @@ array(1) {
 }
 array(3) {
   [0]=>
-  string(22) "your_name@example.info"
-  [1]=>
   string(14) "alex@gmail.com"
-  [2]=>
+  [1]=>
   string(21) "your_name@example.com"
+  [2]=>
+  string(22) "your_name@example.info"
 }
 
 Sorted set
@@ -677,5 +680,3 @@ array(4) {
   [3]=>
   string(5) "white"
 }
-
-```
