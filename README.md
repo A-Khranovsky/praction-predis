@@ -19,6 +19,7 @@ Used to store data:
 * open "http://localhost"
 
 ## Sample of project's output:
+```
 Using Redis with package 'Predis/predis'
 Setting string "value" to DB with key = key by equal NoSQL query:
 SET key value
@@ -680,3 +681,4 @@ array(4) {
   [3]=>
   string(5) "white"
 }
+```
